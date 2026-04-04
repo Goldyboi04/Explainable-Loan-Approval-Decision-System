@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE / Editor
+.idea/
+.vscode/
+
+# Testing / Profiling
+.pytest_cache/
+.coverage
+htmlcov/
+test_output.txt
+
+# Databases
+test.db
+*.sqlite3
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Mac / Windows system files
+.DS_Store
+Thumbs.db
