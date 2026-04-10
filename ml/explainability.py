@@ -32,7 +32,7 @@ def generate_explainability(applicant_data: dict, risk_prob: float):
 
     return {
         "risk_probability": risk_prob,
-        "primary_decision_factor": "Risk Profile is elevated" if risk_prob > 0.5 else "Risk Profile is acceptable",
+        "primary_decision_factor": "Risk Profile is elevated" if risk_prob > 0.4 else "Risk Profile is acceptable",
         "risk_signals": risk_signals,
         "positive_indicators": positive_indicators,
         "automated_decision_recommendation": decision
