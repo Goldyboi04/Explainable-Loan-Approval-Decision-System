@@ -28,7 +28,7 @@ def generate_explainability(applicant_data: dict, risk_prob: float):
     if term > 240: # 20 years
         risk_signals.append(f"Long loan term ({term} months) increases default risk probability over time.")
         
-    decision = "Review and Mitigate" if risk_prob > 0.5 else "Favorable"
+    decision = "Review and Mitigate" if risk_prob > 0.4 else "Favorable"
 
     return {
         "risk_probability": risk_prob,
