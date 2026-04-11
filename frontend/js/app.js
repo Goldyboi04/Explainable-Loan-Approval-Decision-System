@@ -70,7 +70,7 @@ function displayResults(data) {
 
     const probVal = Math.round(data.risk_probability * 100);
     document.getElementById('res-prob').textContent = `${probVal}%`;
-    document.getElementById('res-prob').style.color = probVal > 50 ? 'var(--danger)' : 'var(--success)';
+    document.getElementById('res-prob').style.color = probVal > 40 ? 'var(--danger)' : 'var(--success)';
 
     const decBox = document.getElementById('decision-box');
     decBox.className = `decision-box ${probVal > 40 ? 'risk' : 'safe'}`;
@@ -111,7 +111,7 @@ async function fetchHistory() {
                 <td>₹${record.income_annum.toLocaleString()}</td>
                 <td>₹${record.loan_amount.toLocaleString()}</td>
                 <td>${record.debt_to_income.toFixed(2)}</td>
-                <td style="color: ${riskProb > 50 ? 'var(--danger)' : 'var(--success)'}; font-weight: bold;">
+                <td style="color: ${riskProb > 40 ? 'var(--danger)' : 'var(--success)'}; font-weight: bold;">
                     ${riskProb}%
                 </td>
                 <td>${record.automated_decision}</td>
