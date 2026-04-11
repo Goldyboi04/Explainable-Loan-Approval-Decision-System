@@ -21,7 +21,7 @@ document.getElementById('nav-history').addEventListener('click', (e) => {
 // Form Submission
 document.getElementById('prediction-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const btn = document.getElementById('btn-predict');
     btn.disabled = true;
     btn.textContent = 'Analyzing...';
@@ -49,7 +49,7 @@ document.getElementById('prediction-form').addEventListener('submit', async (e) 
 
         if (!response.ok) throw new Error('API request failed');
         const data = await response.json();
-        
+
         displayResults(data);
     } catch (error) {
         alert("Failed to connect to API: " + error.message);
@@ -71,9 +71,9 @@ function displayResults(data) {
     const probVal = Math.round(data.risk_probability * 100);
     document.getElementById('res-prob').textContent = `${probVal}%`;
     document.getElementById('res-prob').style.color = probVal > 50 ? 'var(--danger)' : 'var(--success)';
-    
+
     const decBox = document.getElementById('decision-box');
-    decBox.className = `decision-box ${probVal > 50 ? 'risk' : 'safe'}`;
+    decBox.className = `decision-box ${probVal > 40 ? 'risk' : 'safe'}`;
     document.getElementById('res-decision').textContent = data.automated_decision_recommendation;
     document.getElementById('res-primary-factor').textContent = data.primary_decision_factor;
 
@@ -99,10 +99,10 @@ async function fetchHistory() {
         const response = await fetch(`${API_BASE_URL}/predictions`);
         if (!response.ok) return;
         const records = await response.json();
-        
+
         const tbody = document.getElementById('history-tbody');
         tbody.innerHTML = '';
-        
+
         records.reverse().forEach(record => {
             const riskProb = Math.round(record.risk_probability * 100);
             const tr = document.createElement('tr');
